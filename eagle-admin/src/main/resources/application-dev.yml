@@ -1,0 +1,2 @@
+file.upload.path: http://localhost:9004/sys/file/upload
+file.view.path: http://localhost:9004/sys/file/open?id=

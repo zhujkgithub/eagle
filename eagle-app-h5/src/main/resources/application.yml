@@ -1,0 +1,49 @@
+server:
+  port: 9007
+
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://admin:123456@127.0.0.1:9000/eureka/
+  instance:
+    hostname: localhost
+    appname: eagle-app-h5
+    lease-renewal-interval-in-seconds: 5
+    lease-expiration-duration-in-seconds: 15
+    prefer-ip-address: true
+#    instance-id: 127.0.0.1:9007
+
+spring:
+#  profiles:
+#    active: @profileActive@
+  application:
+    name: eagle-app-h5
+  http:
+    encoding:
+      charset: UTF-8
+      force: true
+      enabled: true
+  # 配置freemarker
+  freemarker:
+    template-loader-path: classpath:/templates/
+    # 无论怎么变，都是最初的模样
+    suffix: .ftl
+    cache: false
+    contentType: text/html;charset=UTF-8
+    expose-request-attributes: true
+    expose-session-attributes: true
+    allow-request-override: true
+    request-context-attribute: rc
+    settings:
+      template_update_delay: 0
+      default_encoding: UTF-8
+      url_escaping_charset: UTF-8
+      locale: zh_CN
+      boolean_format: true,false
+      datetime_format: yyyy-MM-dd HH:mm:ss
+      date_format: yyyy-MM-dd
+      time_format: HH:mm:ss
+      number_format: 0.######
+      whitespace_stripping: true
+      tag_syntax: auto_detect
+      auto_import: ftl/spring.ftl as spring

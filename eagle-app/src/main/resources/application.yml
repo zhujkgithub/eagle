@@ -1,0 +1,25 @@
+server:
+  port: 9003
+
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://admin:123456@127.0.0.1:9000/eureka/
+  instance:
+    hostname: localhost
+    appname: eagle-app
+    lease-renewal-interval-in-seconds: 5
+    lease-expiration-duration-in-seconds: 15
+    prefer-ip-address: true
+#    instance-id: 127.0.0.1:9003
+
+spring:
+  profiles:
+    active: @profileActive@
+  application:
+    name: eagle-app
+  http:
+    encoding:
+      charset: UTF-8
+      force: true
+      enabled: true

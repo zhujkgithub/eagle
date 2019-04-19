@@ -1,0 +1,37 @@
+swagger.enabled: true
+#  Spring Boot 能够使用Logback, Log4J2, java.util.logging 作为日志记录工具
+#  默认使用Logback作为日志记录工具
+
+#  logging.level.* : 作为package（包）的前缀来设置日志级别。
+#  logging.file :配置日志输出的文件名，也可以配置文件名的绝对路径。
+#  logging.path :配置日志的路径。如果没有配置logging.file,Spring Boot 将默认使用spring.log作为文件名。
+#  logging.pattern.console :定义console中logging的样式。
+#  logging.pattern.file :定义文件中日志的样式。
+#  logging.pattern.level :定义渲染不同级别日志的格式。默认是%5p.
+#  logging.exception-conversion-word :.定义当日志发生异常时的转换字
+#  PID :定义当前进程的ID
+
+
+logging:
+#  logging.level设置日志级别。
+#  我们可以使用TARCE , DEBUG , INFO , WARN , ERROR , FATAL , OFF 。
+#  可以使用root级别和package级别来控制日志的输入级别
+  level:
+    root: warn
+    com.soaring.eagle.api.module: debug
+    org.springframework: info
+    org.mybatis: info
+#  Spring Boot 默认把日志输入到console，
+#  如果我们要把日志输入到文件中，需要配置logging.file 或者logging.path属性。
+#  logging.file属性用来定义文件名。他不仅仅可以配置文件名，也可以路径+文件名。
+#  相对路径或者绝对路径都可以
+  file: D:\eagle\logs\eagle-api.log
+#  定义路径：相对路径或者绝对路径
+#  path: D:\eagle\logs
+  pattern:
+    #  通过设置logging.patter.console属性我们能改变输出到console的日志样式。
+    #  日志样式包括时间，日志级别，线程名，日志名以及消息
+    console: '%d{yyyy-MM-dd HH:mm:ss.SSS} %-5level [%thread] %logger{15} - %msg%n'
+    #  改变文件中的日志样式我们需要设置logging.pattern.file属性。把日志记录到文件中
+    #  只有logging.path属性：默认日志文件的名字为 spring.log
+    file: '%d{yyyy-MM-dd HH:mm:ss.SSS} %-5level [%thread] %logger{15} - %msg%n'

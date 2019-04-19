@@ -1,0 +1,29 @@
+<ul id="leftMenuUl" class="nav nav-list">
+
+    <#if menus?? && menus?size gt 0>
+    <#list menus as menu>
+    <li class="">
+        <a href="#" class="dropdown-toggle">
+            <i class="menu-icon fa ${menu.icon!''}"></i>
+            <span class="menu-text"> ${menu.name!''} </span>
+            <b class="arrow fa fa-angle-down"></b>
+        </a>
+        <b class="arrow"></b>
+        <#if menu.children?? && menu.children?size gt 0>
+        <ul class="submenu">
+            <#list menu.children as submenu>
+            <li class="">
+                <a href="#" data-addtab="${submenu.id!''}" data-ajax="true" data-url="${submenu.href!''}" >
+                    <i class="menu-icon fa fa-caret-right"></i>
+                    ${submenu.name!''}
+                </a>
+                <b class="arrow"></b>
+            </li>
+            </#list>
+        </ul>
+        </#if>
+    </li>
+    </#list>
+    </#if>
+
+</ul>

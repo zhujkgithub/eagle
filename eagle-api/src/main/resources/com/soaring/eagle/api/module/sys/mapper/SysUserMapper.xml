@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.soaring.eagle.api.module.sys.mapper.SysUserMapper">
+
+	<!-- 通用查询映射结果 -->
+	<resultMap id="BaseResultMap" type="com.soaring.eagle.entity.sys.SysUser">
+		<id column="id" property="id" />
+		<result column="username" property="username" />
+		<result column="password" property="password" />
+		<result column="nickname" property="nickname" />
+		<result column="realname" property="realname" />
+		<result column="id_card" property="idCard" />
+		<result column="sex" property="sex" />
+		<result column="birthday" property="birthday" />
+		<result column="age" property="age" />
+		<result column="mobile" property="mobile" />
+		<result column="telephone" property="telephone" />
+		<result column="photo" property="photo" />
+		<result column="email" property="email" />
+		<result column="last_login_ip" property="lastLoginIp" />
+		<result column="last_login_time" property="lastLoginTime" />
+		<result column="login_count" property="loginCount" />
+		<result column="remark" property="remark" />
+		<result column="create_user" property="createUser" />
+		<result column="create_time" property="createTime" />
+		<result column="update_user" property="updateUser" />
+		<result column="update_time" property="updateTime" />
+		<result column="locked" property="locked" />
+		<result column="disabled" property="disabled" />
+		<result column="deleted" property="deleted" />
+		<result column="status" property="status" />
+		<result column="sort" property="sort" />
+		<result column="rank" property="rank" />
+		<result column="error_time" property="errorTime" />
+		<result column="error_ip" property="errorIp" />
+		<result column="error_count" property="errorCount" />
+	</resultMap>
+	<!-- 获取权限集合 -->
+    <select id="getPermissionsByUserId" resultType="java.lang.String">
+		SELECT DISTINCT sm.permission
+			FROM sys_menu sm, sys_role_menu srm, sys_user_role sur
+		WHERE sm.id = srm.menu_id AND srm.role_id = sur.role_id AND sm.type = 2
+			AND sur.user_id = 1
+	</select>
+
+</mapper>

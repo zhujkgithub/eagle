@@ -1,0 +1,30 @@
+.lawyerBox{
+	margin-bottom:0.2rem;
+	background-color:#fff; 
+}
+
+.lawyerBox .lawyerItem{
+	padding:0.2rem 0.25rem 0.2rem;
+	border-top:0.01rem solid #d0d0d0;
+}
+
+.lawyerBox .lawyerItem img{
+	display: inline-block;
+	width:1.28rem;
+	height:1.28rem;
+    border-radius: 50%;
+    vertical-align: middle;
+}
+
+.lawyerBox .lawyerItem .info{
+	width:5.4rem;
+	display:inline-block;
+    padding-left:0.2rem;
+    position: relative;
+    vertical-align: middle;
+}
+
+.lawyerBox .lawyerItem .info .name{
+	color:#101010;
+	font-size:0.32rem;
+}

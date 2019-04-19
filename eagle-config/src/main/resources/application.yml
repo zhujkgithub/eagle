@@ -1,0 +1,41 @@
+server:
+  port: 9006
+
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://admin:123456@127.0.0.1:9000/eureka/
+  instance:
+    hostname: localhost
+    appname: eagle-config
+    lease-renewal-interval-in-seconds: 5
+    lease-expiration-duration-in-seconds: 15
+    prefer-ip-address: true
+#    instance-id: 127.0.0.1:9006
+
+spring:
+#  profiles:
+#    active: @profileActive@
+  application:
+    name: eagle-config
+  http:
+    encoding:
+      charset: UTF-8
+      force: true
+      enabled: true
+  # 配置中心
+  cloud:
+    config:
+      # 配置仓库的分支
+      label: master
+      server:
+        git:
+          # 配置git仓库地址 私有仓库需要配置用户名字和密码
+          uri: your git uri
+          # 配置仓库路径
+          search-paths: your git paths
+          # 访问git仓库的用户名
+          username: your git username
+          # 访问git仓库的密码
+          password: your git password
+

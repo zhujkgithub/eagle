@@ -1,0 +1,41 @@
+server:
+  port: 9008
+
+eureka:
+  client:
+#    registry-fetch-interval-seconds: 5
+    registerWithEureka: false
+    fetchRegistry: false
+    serviceUrl:
+      defaultZone: http://admin:123456@127.0.0.1:9000/eureka/
+  instance:
+    hostname: localhost
+    appname: eagle-admin-server
+    lease-renewal-interval-in-seconds: 5
+    lease-expiration-duration-in-seconds: 15
+    prefer-ip-address: true
+#    instance-id: 127.0.0.1:9008
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+  endpoint:
+    health:
+      show-details: always
+
+spring:
+  application:
+    name: eagle-admin-server
+  # 亲测 可用：password: b**************f 为QQ邮箱16位SMTP授权码
+  mail:
+    host: smtp.qq.com
+    username: your QQ邮箱
+    password: b**************f
+  boot:
+    admin:
+      notify:
+        mail:
+          to: 接受消息的邮箱
+          from: your QQ邮箱

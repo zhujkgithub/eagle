@@ -1,0 +1,111 @@
+                    </div><!-- /.col -->
+                </div><!-- /.row -->
+            </div><!-- /.page-content -->
+        </div>
+    </div><!-- /.main-content -->
+
+    <#include "/common/_footer.html">
+
+    <a href="#" id="btn-scroll-up" class="btn-scroll-up btn btn-sm btn-inverse">
+        <i class="ace-icon fa fa-angle-double-up icon-only bigger-110"></i>
+    </a>
+</div><!-- /.main-container -->
+
+<!-- basic scripts -->
+
+<!--[if !IE]> -->
+<script src="${rc.contextPath}/assets/js/jquery-2.1.4.min.js"></script>
+
+<!-- <![endif]-->
+
+<!--[if IE]>
+<script src="${rc.contextPath}/assets/js/jquery-1.11.3.min.js"></script>
+<![endif]-->
+<script type="text/javascript">
+    if('ontouchstart' in document.documentElement) document.write("<script src='${rc.contextPath}/assets/js/jquery.mobile.custom.min.js'>"+"<"+"/script>");
+</script>
+<script src="${rc.contextPath}/assets/js/bootstrap.min.js"></script>
+
+<!-- page specific plugin scripts -->
+
+<!--[if lte IE 8]>
+<script src="${rc.contextPath}/assets/js/excanvas.min.js"></script>
+<![endif]-->
+<script src="${rc.contextPath}/assets/js/jquery-ui.custom.min.js"></script>
+<script src="${rc.contextPath}/assets/js/jquery.ui.touch-punch.min.js"></script>
+<script src="${rc.contextPath}/assets/js/jquery.easypiechart.min.js"></script>
+<script src="${rc.contextPath}/assets/js/jquery.sparkline.index.min.js"></script>
+<script src="${rc.contextPath}/assets/js/jquery.flot.min.js"></script>
+<script src="${rc.contextPath}/assets/js/jquery.flot.pie.min.js"></script>
+<script src="${rc.contextPath}/assets/js/jquery.flot.resize.min.js"></script>
+
+<!-- ace scripts -->
+<script src="${rc.contextPath}/assets/js/ace-elements.min.js"></script>
+<script src="${rc.contextPath}/assets/js/ace.min.js"></script>
+
+<!-- add by zzg start -->
+<script src="${rc.contextPath}/plugins/bootstrap-addtabs/bootstrap.addtabs.js"></script>
+<script src="${rc.contextPath}/plugins/layer-v3.1.1/layer/layer.js"></script>
+<script src="${rc.contextPath}/plugins/bootstrap-table/bootstrap-table.js"></script>
+<script src="${rc.contextPath}/plugins/bootstrap-table/locale/bootstrap-table-zh-CN.js"></script>
+<script src="${rc.contextPath}/plugins/select2/select2.js"></script>
+<script src="${rc.contextPath}/plugins/My97DatePicker/WdatePicker.js"></script>
+<!-- add by zzg end -->
+
+<!-- 自定义js 开始 -->
+<script src="${rc.contextPath}/js/common.js"></script>
+<!-- 自定义js 结束 -->
+
+<!-- inline scripts related to this page -->
+
+<script type="text/javascript">
+    var imgHeight = document.documentElement.clientHeight;
+    $('#home').css('height', imgHeight * 0.75 + 'px');
+    $(window).resize(function () {
+        var imgHeight = document.documentElement.clientHeight;
+        $('#home').css('height', imgHeight * 0.75 + 'px');
+    });
+
+    function pub(topic, msg) {
+        jQuery.pubsub.publish(topic, msg);
+    }
+
+    $(function () {
+        $.ajaxSettings.cache = false;
+        $.ajaxSettings.complete = function (xhr, status) {
+            var sessionstatus = xhr.getResponseHeader("session-status");
+            if (sessionstatus == "timeout") {
+                window.location.href = basePath + "/login";
+            }
+        };
+
+        $("#sidebar").on("click", ".nav-list", function (ev) {
+            var nav_list = this;
+            var link_element = $(ev.target).closest('a');
+            if (!link_element || link_element.length == 0) return;
+            if (!link_element.hasClass('dropdown-toggle')) {
+                var nav = link_element.closest('.nav');
+                if (nav.length > 0) {
+                    nav.find('.active').each(function () {
+                        var $class = 'active';
+                        if ($(this).hasClass('hover') || ace.settings.close_active) $class += ' open';
+
+                        $(this).removeClass($class);
+                        if (ace.settings.close_active) {
+                            $(this).find(' > .submenu').css('display', '');
+                        }
+                    });
+
+                    var active_li = link_element.closest('li').addClass('active').parents('.nav li').addClass('active open');
+                    nav.closest('.sidebar[data-sidebar-scroll=true]').each(function () {
+                        var $this = $(this);
+                        $this.ace_sidebar_scroll('reset');
+                    });
+                }
+            }
+        });
+    });
+
+</script>
+</body>
+</html>

@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>上传文件测试</title>
+</head>
+<body>
+<div>
+    <form class="upload_form" enctype="multipart/form-data" method="post">
+        <input type="file" name="file" multiple/>
+    </form>
+
+    <input class="upload" type="button" value="SpringMVC方式上传">
+</div>
+<script src="${rc.contextPath}/assets/js/jquery-1.11.3.min.js"></script>
+<script type="text/javascript">
+    $(function () {
+        $(".upload").click(function () {
+            $.ajax({
+                url: '/demo/sys/file/upload',
+                data: new FormData($('.upload_form')[0]),
+                cache: false,
+                contentType: false,
+                processData: false,
+                dataType: 'json',
+                type: 'post',
+                success: function (res) {
+                    console.log(res);
+                }
+            });
+        });
+    });
+</script>
+</body>
+</html>

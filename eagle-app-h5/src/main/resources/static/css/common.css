@@ -1,0 +1,62 @@
+html,body{width:100%;height:100%;font-family:Microsoft Yahei,SimSun,Helvetica;background-color:#efefef;}
+
+/*单行超出省略号*/
+.over{
+	overflow: hidden;
+	text-overflow:ellipsis;
+	white-space: nowrap;
+}
+/* 清除浮动 */
+.clear{
+	content: '';
+	display: block;
+	clear:both;	
+}
+input::-webkit-input-placeholder, textarea::-webkit-input-placeholder { 
+	color: #a0a0a0; 
+	font-size:0.32rem;
+} 
+input:-moz-placeholder, textarea:-moz-placeholder { 
+	color: #a0a0a0; 
+	font-size:0.32rem;
+} 
+input::-moz-placeholder, textarea::-moz-placeholder { 
+	color: #a0a0a0; 
+	font-size:0.32rem; 
+} 
+input:-ms-input-placeholder, textarea:-ms-input-placeholder { 
+	color: #a0a0a0; 
+	font-size:0.32rem;
+} 
+
+/*h5页面常见问题*/
+input, textarea{-webkit-appearance: none;}
+html,body{-webkit-text-size-adjust: 100%;-webkit-tap-highlight-color: rgba(0, 0, 0, 0);}
+*{
+	-webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+}
+img {
+    -webkit-tap-highlight-color:rgba(0,0,0,0);
+    -webkit-tap-highlight-color: rgba(255, 255, 255, 0);
+    -webkit-user-select: none;
+    -moz-user-focus: none;
+    -moz-user-select: none;
+    user-select: none;
+}
+a,a:hover,a:active,a:visited,a:link,a:focus{
+    -webkit-tap-highlight-color:rgba(0,0,0,0);
+    -webkit-tap-highlight-color: transparent;
+    outline:none;
+    background: none;
+    text-decoration: none;
+}
+a {
+    -webkit-tap-highlight-color: rgba(255, 255, 255, 0);
+    -webkit-user-select: none;
+    -moz-user-focus: none;
+    -moz-user-select: none;
+}
+/*上拉加载更多白条先隐藏*/ 
+.mui-pull-bottom-pocket{
+	display:none;
+}

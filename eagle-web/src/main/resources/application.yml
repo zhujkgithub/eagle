@@ -1,0 +1,74 @@
+server:
+  port: 9008
+
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://admin:123456@127.0.0.1:9000/eureka/
+  instance:
+    hostname: localhost
+    appname: eagle-web
+    lease-renewal-interval-in-seconds: 5
+    lease-expiration-duration-in-seconds: 15
+    prefer-ip-address: true
+#    instance-id: 127.0.0.1:9008
+
+spring:
+#  profiles:
+#    active: @profileActive@
+  application:
+    name: eagle-web
+  http:
+    encoding:
+      charset: UTF-8
+      force: true
+      enabled: true
+  #redis配置
+  redis:
+    database: 0
+    host: 192.144.176.99
+    port: 6379
+    password: 123456
+    lettuce:
+      pool:
+        # 接池最大连接数（使用负值表示没有限制）
+        max-active: 8
+        # 连接池最大阻塞等待时间（使用负值表示没有限制）
+        max-wait: -1ms
+        # 连接池中的最小空闲连接
+        max-idle: 8
+        # 连接池中的最大空闲连接
+        min-idle: 0
+    # 连接超时时间
+    timeout: 2000ms
+  cache:
+    type: redis
+    redis:
+      # 缓存超时时间ms
+      time-to-live: 60000
+      #是否缓存空值
+      cache-null-values: false
+
+  # 配置freemarker
+  freemarker:
+    template-loader-path: classpath:/templates/
+    suffix: .html
+    cache: false
+    contentType: text/html;charset=UTF-8
+    expose-request-attributes: true
+    expose-session-attributes: true
+    allow-request-override: true
+    request-context-attribute: rc
+    settings:
+      template_update_delay: 0
+      default_encoding: UTF-8
+      url_escaping_charset: UTF-8
+      locale: zh_CN
+      boolean_format: true,false
+      datetime_format: yyyy-MM-dd HH:mm:ss
+      date_format: yyyy-MM-dd
+      time_format: HH:mm:ss
+      number_format: 0.######
+      whitespace_stripping: true
+      tag_syntax: auto_detect
+      auto_import: ftl/spring.ftl as spring

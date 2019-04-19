@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.soaring.eagle.api.module.user.mapper.UserMapper">
+
+	<!-- 通用查询映射结果 -->
+	<resultMap id="BaseResultMap" type="com.soaring.eagle.entity.user.User">
+		<id column="id" property="id" />
+		<result column="username" property="username" />
+		<result column="password" property="password" />
+		<result column="realname" property="realname" />
+		<result column="nickname" property="nickname" />
+		<result column="photo" property="photo" />
+		<result column="id_card" property="idCard" />
+		<result column="sex" property="sex" />
+		<result column="birthday" property="birthday" />
+		<result column="age" property="age" />
+		<result column="mobile" property="mobile" />
+		<result column="phone" property="phone" />
+		<result column="create_user" property="createUser" />
+		<result column="create_time" property="createTime" />
+		<result column="update_user" property="updateUser" />
+		<result column="update_time" property="updateTime" />
+		<result column="locked" property="locked" />
+		<result column="disabled" property="disabled" />
+		<result column="deleted" property="deleted" />
+		<result column="type" property="type" />
+		<result column="status" property="status" />
+		<result column="last_login_ip" property="lastLoginIp" />
+		<result column="last_login_time" property="lastLoginTime" />
+		<result column="login_count" property="loginCount" />
+	</resultMap>
+	<select id="queryPage" resultType="com.soaring.eagle.entity.user.User">
+		select * from `user` where 1 = 1
+		<if test="name != null and name != ''">
+			and username like concat('%', #{name}, '%')
+		</if>
+	</select>
+
+</mapper>
